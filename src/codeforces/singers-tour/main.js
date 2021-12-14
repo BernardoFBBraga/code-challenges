@@ -32,24 +32,15 @@ for (let i = 0; i < nQueues; i++) {
   const minutes = this.readline()
     .split(" ")
     .map((e) => Number(e));
-  console.log(n, minutes);
 
-  // Prepare matrix with the coeficient
   const matrix = [];
   for (let city = 0; city < n; city++) {
     matrix[city] = [];
     for (let singer = 0; singer < n; singer++) {
-      /*
-        1 3 2
-        2 1 3
-        3 2 1
-      */
-      matrix[city][singer] = 1 + ((city + (n-singer)) % n);
+      matrix[city][singer] = 1 + ((city + (n - singer)) % n);
     }
     matrix[city].push(minutes[city]);
   }
-
-  matprint(matrix);
 
   for (let a = 0; a < n; a++) {
     const f1 = matrix[a][a];
@@ -63,7 +54,7 @@ for (let i = 0; i < nQueues; i++) {
       }
     }
   }
-  
+
   for (let a = n - 1; a >= 0; a--) {
     for (let lin = a - 1; lin >= 0; lin--) {
       const fator = matrix[lin][a];
@@ -79,7 +70,7 @@ for (let i = 0; i < nQueues; i++) {
       this.print("NO");
       break;
     }
-    vars.push(matrix[a][n]);
+    vars.push(Math.round(matrix[a][n]));
   }
   if (vars.length === n) {
     this.print("YES");
