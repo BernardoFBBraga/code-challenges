@@ -103,6 +103,11 @@ for (let i = 0; i < nQueues; i++) {
       this.print("NO");
       break;
     }
+    if (Math.abs(matrix[a][n] - Math.round(matrix[a][n])) > 0.0000001) {
+      // not an integer
+      this.print("NO");
+      break;
+    }
     vars.push(Math.round(matrix[a][n]));
   }
   if (vars.length === n) {
